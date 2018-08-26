@@ -1,0 +1,85 @@
+        <header class="l-header">
+          <nav class="p-navigation">
+            <p class="c-hamburger">
+              <a href="#">
+                <span></span>
+                <span></span>
+                <span></span>
+              </a>
+            </p>
+            <div class="c-navigation">
+
+              <!--ログアウト状態-->
+              <div class="c-navigation__item--member-logout">
+                <p class="c-btn--regest">
+                  <%= link_to new_user_registration_path do %>
+                  会員登録はこちら
+                  <% end %>
+                </p>
+              </div>
+
+              <ul class="c-navigation__item--list">
+                <li><a href="/person"><i class="fas fa-users"></i>パーソンを探す</a></li>
+                <li><a href="/lesson"><i class="fas fa-search"></i>レッスンを探す</a></li>
+              </ul>
+
+              <ul class="c-navigation__item--logout">
+                <li>
+                  <%= link_to new_user_session_path do %>
+                  <i class="fas fa-sign-in-alt"></i>ログイン
+                  <% end %>
+                </li>
+              </ul>
+
+              <ul class="c-navigation__item--list">
+                <li class="c-btn--cta">
+                  <%= link_to new_person_registration_path do %>
+                  <i class="far fa-play-circle"></i>先生になろう
+                  <% end %>
+                </li>
+              </ul>
+              <!--ログアウト状態-ここまで-->
+              <br>
+              <!--ログイン状態-->
+              <div class="c-navigation__item--member-login">
+                <div class="c-person-medium">
+                  <%= link_to new_user_registration_path do %>
+                  <div class="c-person-medium__item--thumbnail">
+                    <img src="/img/bitmap.png">
+                  </div>
+                  <h3 class="c-person-medium__item--title">ニックネームニックネーム</h3>
+                  <% end %>
+                </div>
+              </div>
+
+              <ul class="c-navigation__item--list">
+                <li><a href="/person"><i class="fas fa-users"></i>パーソンを探す</a></li>
+                <li><a href="/lesson"><i class="fas fa-search"></i>レッスンを探す</a></li>
+              </ul>
+
+              <ul class="c-navigation__item--login">
+                <li>
+                  <%= link_to destroy_user_session_path , method: :delete do %>
+                  <i class="fas fa-sign-in-alt"></i>ログアウト
+                  <% end %>
+                </li>
+              </ul>
+
+              <ul class="c-navigation__item--list">
+                <li class="c-btn--cta">
+                  <%= link_to new_person_registration_path do %>
+                  <i class="far fa-play-circle"></i>先生になろう
+                  <% end %>
+                </li>
+              </ul>
+              <!--ログイン状態-ここまで-->
+            </div>
+          </nav>
+          <h1 class="c-logo">
+            <%= link_to root_path do %>
+            <img src="https://c.stat100.ameba.jp/official/sp/img/logo.png" width="180">
+            <% end %>
+          </h1>
+
+        </header>
+        <!-- IE9未満への配慮が不要であれば、削除 -->

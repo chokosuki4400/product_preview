@@ -1,0 +1,49 @@
+<h2>Sign up</h2>
+
+<%#= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= form_for resource, url: {action: "confirm"} do |f| %>
+  <%= devise_error_messages! %>
+
+  <%= f.fields_for :userinfo, resource.build_userinfo || Userinfo.new do |info| %>
+  <%= info.label :nickname %>
+  <%= info.text_field :nickname%>
+
+  <%= info.radio_button :sex, 1, id: "sex01" %>
+  <%= info.label :sex, "男性", for: "sex01" %>
+  <%= info.radio_button :sex, 2, id: "sex02" %>
+  <%= info.label :sex, "女性", for: "sex02" %>
+
+  <%= info.label :age %>
+  <%= info.text_field :age%>
+
+  <%= info.label :live %>
+  <%= info.text_field :live%>
+
+  <%= info.label :country %>
+  <%= info.text_field :country%>
+
+  <% end %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit "Sign up" %>
+  </div>
+<% end %>

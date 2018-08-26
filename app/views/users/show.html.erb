@@ -1,0 +1,24 @@
+<h1>ユーザー詳細</h1>
+
+<% if @user.present? %>
+<div class="c-table">
+	<dl class="c-table__item--content">
+		<% if @user.id.present? %>
+		<dt>ID</dt>
+		<dd><%= @user.id %></dd>
+		<% end %>
+		<% if @user.nickname.present? %>
+		<dt>名前</dt>
+		<dd><%= @user.nickname %></dd>
+		<% end %>
+		<dt>sex</dt>
+		<dd><%= @user.sex %></dd>
+		<dt>age</dt>
+		<dd><%= @user.age %></dd>
+		<dt>live</dt>
+		<dd><%= @user.live %></dd>
+		<dt>country</dt>
+		<dd><%= @user.country %></dd>
+		</dl>
+</div>
+<% end %>

@@ -1,0 +1,19 @@
+/log
+/tmp
+!/log/.keep
+!/tmp/.keep
+/public/system
+/public/packs
+/node_modules
+
+.env
+.env.dev
+
+/.bundle
+/vendor/bundle
+
+/.idea
+
+# Ignore master key for decrypting credentials and more.
+/config/master.key
+/public/uploads/*

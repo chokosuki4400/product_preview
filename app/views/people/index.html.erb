@@ -1,0 +1,17 @@
+<h1>パーソン一覧</h1>
+
+<% if @people.present? %>
+<ul class="people">
+	<% @people.each do |person| %>
+	<li>
+		<%= link_to person do %>
+		<%= person.personinfo.id %>
+		<%= person.personinfo.firstname %>
+		<%= person.personinfo.lastname %>
+		<%= person.personinfo.age %>
+		<img src="<%= person.personinfo.image %>" width="100">
+		<% end %>
+	</li><br>
+	<% end %>
+</ul>
+<% end %>

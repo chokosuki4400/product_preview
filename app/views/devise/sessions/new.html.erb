@@ -1,0 +1,52 @@
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+<div class="p-form--login">
+  <div class="c-title">
+    <h2 class="c-title__text">ログイン</h2>
+  </div>
+
+  <div class="p-form__item">
+
+    <div class="c-form-input-text">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "メールアドレス" %>
+      <p class="error-text">メールアドレスエラー</p>
+    </div>
+
+    <div class="c-form-input-text">
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワード(半角英数字6文字以上)" %>
+      <p class="error-text">パスワードエラー</p>
+    </div>
+  </div>
+
+  <div class="p-form__item">
+    <p class="c-btn--person">
+      <%= f.submit "メールアドレスでログイン" %>
+    </p>
+    <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+    <p class="c-text">
+      <a href="#">パスワードを忘れた方</a>
+      <%#= link_to "パスワードを忘れた方", new_password_path(resource_name) %>
+    </p>
+    <% end -%>
+  </div>
+
+  <div class="p-form__item">
+    <p class="text-divider">または</p>
+    <p class="c-btn--facebook">
+      <a href="#">Facebookでログイン</a>
+    </p>
+  </div>
+</div>
+
+<div class="p-form--regest">
+  <div class="c-title">
+    <h2 class="c-title__text">会員登録されていない方へ</h2>
+  </div>
+
+  <p class="c-btn--cta">
+    <%= link_to "無料会員登録する", new_registration_path(resource_name) %>
+  </p>
+</div>
+
+<% end %>
+
+<%#= render "devise/shared/links" %>

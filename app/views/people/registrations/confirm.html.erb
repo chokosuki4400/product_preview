@@ -1,0 +1,172 @@
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= devise_error_messages! %>
+
+<div class="p-form--tutorial-edit">
+
+  <div class="p-form__item">
+    <div class="c-title">
+      <h1 class="c-title__text">パーソンの公開プロフィール確認</h1>
+    </div>
+  </div>
+  <div class="p-form__item">
+    <p class="c-text">テキストダミー「顔の見えるまなびのコミュニティ」を目指しています。
+    先生には、お名前 + ご本人写真 + ネット上の公開プロフィールの開示をお願いしております。 </p>
+    <p class="c-text--attention">以下の情報が未登録・不備がある場合は、講座は公開されません。また情報はこれから公開されるあなたの教室ページに掲載されます。 </p>
+  </div>
+
+  <div class="p-form__item--step">
+
+    <div class="c-form-input-textarea">
+      <div class="c-title"><h2 class="c-title__text--headline">カテゴリー</h2></div>
+      <p class="c-text"><%= @person.middle_categories %></p>
+
+      <% @person.middle_categories.each do |like| %>
+      <%#= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false %>
+      <%= like.ids %>
+      <% end %>
+
+      <%= f.fields_for :middle_categories do |item| %>
+      <% @person.middle_categories.each do |like| %>
+      aa
+      <%= like.id %>
+      <% end %>
+      <% end %>
+
+<% @person.middle_categories.each do |like| %>
+aa
+  <%= like.id %>
+<% end %>
+
+      <%= f.hidden_field :middle_category_ids %>
+    </div>
+  </div>
+
+
+  <%= f.fields_for :personinfo do |info| %>
+
+  <div class="p-form__item--step">
+
+
+    <h2 class="c-title--step">2.&nbsp;あなたのプロフィールを入力</h2>
+
+    <div class="c-form-input-text">
+      <div class="c-title"><h2 class="c-title__text--headline">ビジネスネーム</h2></div>
+
+      <div class="tutorial-input-text">
+        <p class="c-text"><%= @person.personinfo.firstname %>&nbsp;<%= @person.personinfo.lastname %></p>
+        <%= info.hidden_field :firstname %>
+        <%= info.hidden_field :lastname %>
+      </div>
+    </div>
+
+    <div class="c-form-radio">
+      <div class="c-title"><h2 class="c-title__text--headline">性別</h2></div>
+      <div class="c-form-radio__item">
+        <p class="c-text"><%= @person.personinfo.sex %></p>
+        <%= info.hidden_field :sex %>
+      </div>
+    </div>
+
+    <div class="c-form-input-text">
+      <div class="c-title"><h2 class="c-title__text--headline">年齢</h2></div>
+      <p class="c-text"><%= @person.personinfo.age %>歳</p>
+        <%= info.hidden_field :age %>
+    </div>
+
+    <div class="c-form-pulldown">
+      <div class="c-title"><h2 class="c-title__text--headline">居住地</h2></div>
+      <div class="c-form-pulldown__item">
+        <p class="c-text"><%= @person.personinfo.live %></p>
+        <%= info.hidden_field :live %>
+      </div>
+    </div>
+
+    <div class="c-form-pulldown">
+      <div class="c-title"><h2 class="c-title__text--headline">出身地</h2></div>
+      <div class="c-form-pulldown__item">
+        <p class="c-text"><%= @person.personinfo.country %></p>
+        <%= info.hidden_field :country %>
+      </div>
+    </div>
+
+    <div class="c-form-pulldown">
+      <div class="c-title"><h2 class="c-title__text--headline">メールアドレス</h2></div>
+      <div class="c-form-pulldown__item">
+        <p class="c-text"><%= @person.email %></p>
+        <%= f.hidden_field :email %>
+      </div>
+    </div>
+
+    <div class="c-form-pulldown">
+      <div class="c-title"><h2 class="c-title__text--headline">パスワード</h2></div>
+      <div class="c-form-pulldown__item">
+        <p class="c-text"><%= @person.password %></p>
+        <%= f.hidden_field :password %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="p-form__item--step">
+    <h2 class="c-title--step">3.&nbsp;顔写真</h2>
+
+    <div class="c-form-input-file">
+      <div class="c-change-photo">
+        <p class="c-change-photo__main">
+          <%= image_tag(@person.personinfo.image.url) %>
+        </p>
+      </div>
+    </div>
+    <%= info.hidden_field :image_cache %>
+  </div>
+
+  <div class="p-form__item--step">
+    <h2 class="c-title--step">4.&nbsp;自己紹介</h2>
+
+    <div class="c-form-input-text">
+      <div class="c-title"><h2 class="c-title__text--headline">キャッチコピー</h2></div>
+      <p class="c-text"><%= @person.personinfo.copy %></p>
+      <%= info.hidden_field :copy %>
+    </div>
+
+    <div class="c-form-input-textarea">
+      <div class="c-title"><h2 class="c-title__text--headline">なにを教えているか</h2></div>
+      <p class="c-text"><%= @person.personinfo.program %></p>
+      <%= info.hidden_field :program %>
+    </div>
+
+    <div class="c-form-input-textarea">
+      <div class="c-title"><h2 class="c-title__text--headline">どこで教えているか</h2></div>
+      <p class="c-text"><%= @person.personinfo.place %></p>
+      <%= info.hidden_field :place %>
+    </div>
+
+    <div class="c-form-input-textarea">
+      <div class="c-title"><h2 class="c-title__text--headline">どのように教えているか</h2></div>
+      <p class="c-text"><%= @person.personinfo.method %></p>
+      <%= info.hidden_field :method %>
+    </div>
+
+    <div class="c-form-input-textarea">
+      <div class="c-title"><h2 class="c-title__text--headline">さいごに</h2></div>
+      <p class="c-text"><%= @person.personinfo.message %></p>
+      <%= info.hidden_field :message %>
+    </div>
+
+  </div>
+
+
+  <div class="p-form__btn-area">
+    <p class="c-btn--regest">
+      <%= link_to "入力を修正する", :back %>
+    </p>
+    <p class="c-btn--cta">
+      <%= f.submit "プロフィールを確定" %>
+    </p>
+  </div>
+
+  <% end %>
+
+</div>
+
+<% end %>

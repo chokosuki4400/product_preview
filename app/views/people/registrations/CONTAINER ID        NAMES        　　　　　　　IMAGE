@@ -1,0 +1,37 @@
+CONTAINER ID        NAMES        　　　　　　　IMAGE             COMMAND                  CREATED             STATUS              PORTS
+b292a7d3de2d        backend_container        rails             "rails c"                About an hour ago   Up About an hour
+b1e3345f625d        postgres_container       postgres          "/docker-entrypoint.s"   2 days ago          Up 3 hours          5432/tcp
+
+psql -U postgres -h db -d postgres
+
+docker exec -ti rails_docker_template_db_1 bash
+psql -U postgres
+
+■データベース操作コマンド
+
+・データベース一覧
+\l
+
+・データベース指定
+\c データベース名
+\c app_development
+
+テーブル構造の表示
+\dt;
+\d テーブル名;
+\d people;
+\d personinfos;
+\d large_categories;
+\d middle_categories;
+\d people_middle_categories;
+
+テーブル内のデータを一覧
+\x
+select * from people;
+select * from personinfos;
+
+select * from personinfos;
+select * from large_categories;
+select * from middle_categories;
+select * from people_middle_categories;
+

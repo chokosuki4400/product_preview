@@ -1,0 +1,156 @@
+<article class="p-article">
+			<div class="c-change-photo">
+				<p class="c-change-photo__main">
+					<img src="<%= @person.image %>" width="400" height="400" alt="下筌ダム" id="MainPhoto">
+				</p>
+<!-- 				<ul class="c-change-photo__thumbnail">
+					<li class="c-person-medium">
+						<div class="c-person-medium__item--thumbnail">
+							<img src="/img/bitmap.png" alt="下筌ダム" class="ChangePhoto">
+						</div>
+					</li>
+					<li class="c-person-medium">
+						<div class="c-person-medium__item--thumbnail">
+							<img src="/img/bitmap01.png" alt="石打ダム" class="ChangePhoto">
+						</div>
+					</li>
+					<li class="c-person-medium">
+						<div class="c-person-medium__item--thumbnail">
+							<img src="/img/bitmap02.png" alt="石打ダム" class="ChangePhoto">
+						</div>
+					</li>
+					<li class="c-person-medium">
+						<div class="c-person-medium__item--thumbnail">
+							<img src="/img/bitmap01.png" alt="石打ダム" class="ChangePhoto">
+						</div>
+					</li>
+					<li class="c-person-medium">
+						<div class="c-person-medium__item--thumbnail">
+							<img src="/img/bitmap.png" alt="石打ダム" class="ChangePhoto">
+						</div>
+					</li>
+				</ul> -->
+			</div>
+
+			<div class="p-article__item">
+				<p class="c-tag">所属大カテゴリー名</p>
+				<div class="c-title--name">
+					<h2 class="c-title__text"><%= @person.firstname %> <%= @person.lastname %></h2>
+				</div>
+				
+				<p class="item-text--introduction">
+					<%= @person.copy %>
+				</p>
+			</div>
+
+			<div class="p-article__item">
+				<div class="c-title">
+					<h2 class="c-title__text">なにをやっているか</h2>
+				</div>
+				<p class="item-text">
+					<%= @person.program %>
+				</p>
+			</div>
+
+			<div class="p-article__item">
+				<div class="c-title">
+					<h2 class="c-title__text">どこでやっているか</h2>
+				</div>
+				<p class="item-text">
+					<%= @person.place %>
+				</p>
+			</div>
+
+
+			<div class="p-article__item">
+				<div class="c-title">
+					<h2 class="c-title__text">どのようにやっているか</h2>
+				</div>
+				<p class="item-text">
+					<%= @person.method %>
+				</p>
+			</div>
+
+			<div class="p-article__item">
+				<div class="c-title">
+					<h2 class="c-title__text">さいごに</h2>
+				</div>
+				<p class="item-text">
+					<%= @person.message %>
+				</p>
+			</div>
+
+
+			<div class="p-article__item">
+				<div class="c-title">
+					<h2 class="c-title__text">基本情報</h2>
+				</div>
+
+				<div class="c-table">
+					<dl class="c-table__item">
+						<dt>ニックネーム</dt>
+						<dd><%= @person.firstname %> <%= @person.lastname %></dd>
+						<dt>性別</dt>
+						<dd><%= @person.sex %></dd>
+						<dt>年齢</dt>
+						<dd><%= @person.age %>歳</dd>
+						<dt>居住地</dt>
+						<dd><%= @person.live %></dd>
+						<dt>出身地</dt>
+						<dd><%= @person.country %></dd>
+					</dl>
+				</div>
+
+			</div>
+
+
+			<div class="p-article__item--related">
+				<ul class="c-accordion">
+					<li class="c-accordion__item">
+						<p class="accordion-title">このパーソンのレッスン</p>
+						<ul class="list">
+							<li>
+								<a href="#">
+									<div class="c-card-small">
+										<div class="c-card-small__item--thumbnail">
+											<img src="/img/bitmap02.png">
+										</div>
+										<div class="c-card-small__item--content">
+											<h2 class="title">レッスンタイトルレッスンタイトルレッスンタイトル(24文字)...
+											</h2>
+										</div>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</li>
+					<li class="c-accordion__item">
+						<p class="accordion-title">おすすめパーソン</p>
+						<ul class="list">
+							<!-- {{ range $val := seq 4 }} -->
+							<li>
+								<a href="#">
+									<div class="c-card-small">
+										<div class="c-card-small__item--thumbnail-radius">
+											<img src="/img/bitmap.png">
+										</div>
+										<div class="c-card-small__item--content">
+											<h2 class="title">ニックネームニック...(9文字)</h2>
+											<p class="text">テキストテキストテキストテキストテキスト...(25文字)</p>
+										</div>
+									</div>
+								</a>
+							</li>
+							<!-- {{ end }} -->
+
+							<li class="c-btn--more">
+								<a href="#">もっとみる</a>
+							</li>
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+
+</article>
+
