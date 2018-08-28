@@ -23,14 +23,16 @@
       <ul class="c-form-pulldown__item">
         <li>
 
-          <%= f.fields_for :people_middle_categories do |item| %>
-          <%= item.collection_check_boxes :middle_category_id, MiddleCategory.all, :id, :name ,include_hidden: false %>
+          <%#= f.fields_for :people_middle_categories_attributes do |item| %>
+          <%#= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false%>
+          <%# end %>
 
-          <%#= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name) %>
-
-          <%#= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name %>
-          <%#= item.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name) %>
+          <%= f.fields_for :middle_categories_attributes do |item| %>
+          <%= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false%>
           <% end %>
+          <%#= f.fields_for :middle_categories_attributes do |item| %>
+          <%#= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false %>
+          <%# end %>
 
         </li>
       </ul>
@@ -202,4 +204,3 @@
 </div>
 
 <% end %>
-

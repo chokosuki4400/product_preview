@@ -1,5 +1,6 @@
 class PeopleController < ApplicationController
   def index
+  	# puts params[:comment]
   	@people = Person.all
   end
 

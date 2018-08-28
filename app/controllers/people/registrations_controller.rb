@@ -5,9 +5,11 @@ class People::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_account_update_params, only: [:update]
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    # super
+    @person = Person.new
+    @person.people_middle_categories.build
+  end
 
   # POST /resource
   # def create
@@ -75,9 +77,18 @@ class People::RegistrationsController < Devise::RegistrationsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
+    logger.debug('========')
+    logger.debug(sign_up_params.to_yaml)
+    logger.debug('変更前')
+    logger.debug(sign_up_params)
+    logger.debug('変更後')
+    # logger.debug(sign_up_params[:middle_categories_attributes][:middle_category_ids].map(&:to_i))
+    # # logger.debug(sign_up_params[:middle_categories_attributes][:middle_category_ids][0].to_i)
+    # logger.debug(sign_up_params[:middle_categories_attributes][:middle_category_ids][0].class)
+    logger.debug('========')
     devise_parameter_sanitizer.permit(:sign_up) do |params|
       params.permit(:email, :password, :password_confirmation, :current_password,
-                    people_middle_categories: [:id, :middle_category_id],
+                    middle_categories_attributes: [:person_id, middle_category_ids: []],
                     personinfo_attributes: [:person_id, :firstname, :lastname, :sex, :age, :live, :country, :copy, :program, :place, :method, :message, :image, :image_cache])
     end
   end
@@ -86,7 +97,7 @@ class People::RegistrationsController < Devise::RegistrationsController
   def configure_account_update_params
     devise_parameter_sanitizer.permit(:account_update) do |params|
       params.permit(:email, :password, :password_confirmation, :current_password,
-                    people_middle_categories: [:id, :middle_category_id],
+                    middle_categories_attributes: [:person_id, middle_category_ids: []],
                     personinfo_attributes: [:person_id, :firstname, :lastname, :sex, :age, :live, :country, :copy, :program, :place, :method, :message, :image, :image_cache])
     end
   end

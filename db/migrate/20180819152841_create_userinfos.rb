@@ -4,7 +4,7 @@ class CreateUserinfos < ActiveRecord::Migration[5.2]
       t.references :user, null: false
       t.string :nickname
       t.string :sex
-      t.inet :age
+      t.string :age
       t.string :live
       t.string :country
 

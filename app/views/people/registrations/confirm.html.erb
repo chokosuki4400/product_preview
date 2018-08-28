@@ -25,15 +25,11 @@
       <%= like.ids %>
       <% end %>
 
-      <%= f.fields_for :middle_categories do |item| %>
-      <% @person.middle_categories.each do |like| %>
-      aa
-      <%= like.id %>
-      <% end %>
+      <%= f.fields_for :middle_category_ids do |item| %>
+      <%= item %>
       <% end %>
 
 <% @person.middle_categories.each do |like| %>
-aa
   <%= like.id %>
 <% end %>
 
@@ -113,7 +109,7 @@ aa
     <div class="c-form-input-file">
       <div class="c-change-photo">
         <p class="c-change-photo__main">
-          <%= image_tag(@person.personinfo.image.url) %>
+          <%#= image_tag(@person.personinfo.image.url) %>
         </p>
       </div>
     </div>

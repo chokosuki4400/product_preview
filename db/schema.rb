@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_071423) do
     t.bigint "user_id", null: false
     t.string "nickname"
     t.string "sex"
-    t.inet "age"
+    t.string "age"
     t.string "live"
     t.string "country"
     t.datetime "created_at", null: false
