@@ -88,7 +88,7 @@ class People::RegistrationsController < Devise::RegistrationsController
     logger.debug('========')
     devise_parameter_sanitizer.permit(:sign_up) do |params|
       params.permit(:email, :password, :password_confirmation, :current_password,
-                    middle_categories_attributes: [:person_id, middle_category_ids: []],
+                    middle_category_ids: [],
                     personinfo_attributes: [:person_id, :firstname, :lastname, :sex, :age, :live, :country, :copy, :program, :place, :method, :message, :image, :image_cache])
     end
   end

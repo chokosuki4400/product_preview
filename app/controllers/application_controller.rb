@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
   	devise_parameter_sanitizer.permit(:sign_up, keys: [:userinfo_attributes => [:user_id, :nickname, :sex, :age, :live, :country]])
   	devise_parameter_sanitizer.permit(:account_update, keys: [:userinfo_attributes => [:user_id, :nickname, :sex, :age, :live, :country]])
     devise_parameter_sanitizer.permit(:sign_up, keys: [
-      :personinfo_attributes => [:person_id, :firstname, :lastname, :sex, :age, :live, :country, :copy, :program, :place, :method, :message, :image, :image_cache],
-      :middle_categories_attributes => [:person_id,  {middle_category_ids:[]}]
+      middle_category_ids: [],
+      :personinfo_attributes => [:person_id, :firstname, :lastname, :sex, :age, :live, :country, :copy, :program, :place, :method, :message, :image, :image_cache]
     ])
     devise_parameter_sanitizer.permit(:account_update, keys: [
       :personinfo_attributes => [:person_id, :firstname, :lastname, :sex, :age, :live, :country, :copy, :program, :place, :method, :message, :image, :image_cache],
