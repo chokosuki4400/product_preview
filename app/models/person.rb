@@ -8,6 +8,5 @@ class Person < ApplicationRecord
   has_many :people_middle_categories, dependent: :destroy
   has_many :middle_categories, through: :people_middle_categories
 
-  accepts_nested_attributes_for :middle_categories
   accepts_nested_attributes_for :personinfo, update_only: true
 end
