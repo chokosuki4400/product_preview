@@ -17,25 +17,40 @@
 
   <div class="p-form__item--step">
 
+    <h2 class="c-title--step">1.&nbsp;レッスンジャンル</h2>
 
-    <div class="c-form-pulldown">
-      <div class="c-title"><h2 class="c-title__text--headline">カテゴリ</h2><span class="c-tag--required">必須</span></div>
-      <ul class="c-form-pulldown__item">
-        <li>
+    <div class="c-form-pulldown--item c-form-pulldown--item--first">
+      <div class="c-form-pulldown">
+        <div class="c-title"><h2 class="c-title__text--headline">レッスン大カテゴリーを選択</h2><span class="c-tag--required">必須</span></div>
+        <ul class="c-form-pulldown__item">
+          <li>
+            <%= select_tag :large_category_id, options_from_collection_for_select(LargeCategory.all, :id, :name)%>
+            <%#= f.collection_select(:middle_category_ids, LargeCategory.all, :id, :name, {}, {:multiple => true}) %>
+          </li>
+        </ul>
+        <p class="error-text">パスワードエラー</p>
+      </div>
+      <div class="c-form-pulldown">
+        <div class="c-title"><h2 class="c-title__text--headline">レッスン中カテゴリーを選択</h2><span class="c-tag--required">必須</span></div>
+        <ul class="c-form-pulldown__item">
+          <li>
+           <%#= select_tag :middle_category_ids, options_from_collection_for_select(MiddleCategory.all, :id, :name) %>
+           <%= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name, {include_hidden: false}, {:multiple => false, :name => 'person[middle_category_ids][]'}) %>
+           <%#= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name) %>
+         </li>
+       </ul>
+       <p class="error-text">パスワードエラー</p>
+     </div>
+   </div>
 
-          <%#= f.fields_for :people_middle_categories_attributes do |item| %>
-          <%#= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false%>
-          <%# end %>
+    <!--下のボタンは中カテを選択した瞬間に表示させたい-->
 
-          <%= f.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false%>
-          <%#= f.fields_for :middle_categories_attributes do |item| %>
-          <%#= item.collection_check_boxes :middle_category_ids, MiddleCategory.all, :id, :name ,include_hidden: false %>
-          <%# end %>
+    <p class="c-btn--more">
+      <a href="#">さらにカテゴリーを追加する</a>
+    </p>
 
-        </li>
-      </ul>
-      <p class="error-text">パスワードエラー</p>
-    </div>
+    <!--上のボタンをクリック・タップすると、「大」「中」カテゴリーをセットで表示させたい-->
+
   </div>
 
   <%= f.fields_for :personinfo, resource.build_personinfo || Personinfo.new do |info| %>

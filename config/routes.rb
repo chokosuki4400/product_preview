@@ -24,6 +24,10 @@ Rails.application.routes.draw do
 
   root to: "home#index"
   get "people/complete" => "people#complete", as: "people/complete"
+  get "users/complete" => "users#complete", as: "users/complete"
+
+  # レッスンカテゴリーの検索用ページ
+  get 'people/categories'
 
   resources :users, :only => [:index, :show]
   resources :people, :only => [:index, :show]
