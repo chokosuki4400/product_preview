@@ -19,7 +19,7 @@
 
     <h2 class="c-title--step">1.&nbsp;レッスンジャンル</h2>
 
-    <div class="c-form-pulldown--item c-form-pulldown--item--first">
+    <!-- <div class="c-form-pulldown--item c-form-pulldown--item--first">
       <div class="c-form-pulldown c-form-pulldown--large_category">
         <div class="c-title"><h2 class="c-title__text--headline">レッスン大カテゴリーを選択</h2><span class="c-tag--required">必須</span></div>
         <ul class="c-form-pulldown__item">
@@ -41,9 +41,14 @@
        </ul>
        <p class="error-text">パスワードエラー</p>
      </div>
-   </div>
+   </div> -->
 
-   <%= link_to_add "Add a task", :large_category_id %>
+   <%= f.fields_for :middle_category_ids do |category| %>
+     <%= select_tag :large_category_id, options_from_collection_for_select(LargeCategory.all, :id, :name) ,{ id: 'large_category_id', class: 'large_category--item'} %><br>
+     <%= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name, {include_hidden: false}, {:multiple => false, :name => 'person[middle_category_ids][]', :id => 'middle_category_id'}) %>
+     <%= category.link_to_remove "Remove this task" %>
+     <% end %>
+   <p><%= f.link_to_add "Add a task", :middle_category_ids %></p>
 
     <!--下のボタンは中カテを選択した瞬間に表示させたい-->
 
