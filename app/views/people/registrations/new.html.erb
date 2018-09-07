@@ -1,5 +1,5 @@
 <%#= form_for resource, url: {action: "confirm"} do |f| %>
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<%= nested_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= devise_error_messages! %>
 
 <div class="p-form--tutorial-edit">
@@ -20,28 +20,30 @@
     <h2 class="c-title--step">1.&nbsp;レッスンジャンル</h2>
 
     <div class="c-form-pulldown--item c-form-pulldown--item--first">
-      <div class="c-form-pulldown">
+      <div class="c-form-pulldown c-form-pulldown--large_category">
         <div class="c-title"><h2 class="c-title__text--headline">レッスン大カテゴリーを選択</h2><span class="c-tag--required">必須</span></div>
         <ul class="c-form-pulldown__item">
           <li>
-            <%= select_tag :large_category_id, options_from_collection_for_select(LargeCategory.all, :id, :name)%>
+            <%= select_tag :large_category_id, options_from_collection_for_select(LargeCategory.all, :id, :name) ,{ id: 'large_category_id', class: 'large_category--item'} %>
             <%#= f.collection_select(:middle_category_ids, LargeCategory.all, :id, :name, {}, {:multiple => true}) %>
           </li>
         </ul>
         <p class="error-text">パスワードエラー</p>
       </div>
-      <div class="c-form-pulldown">
+      <div class="c-form-pulldown c-form-pulldown--middle_category">
         <div class="c-title"><h2 class="c-title__text--headline">レッスン中カテゴリーを選択</h2><span class="c-tag--required">必須</span></div>
         <ul class="c-form-pulldown__item">
           <li>
            <%#= select_tag :middle_category_ids, options_from_collection_for_select(MiddleCategory.all, :id, :name) %>
-           <%= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name, {include_hidden: false}, {:multiple => false, :name => 'person[middle_category_ids][]'}) %>
+           <%= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name, {include_hidden: false}, {:multiple => false, :name => 'person[middle_category_ids][]', :id => 'middle_category_id'}) %>
            <%#= f.collection_select(:middle_category_ids, MiddleCategory.all, :id, :name) %>
          </li>
        </ul>
        <p class="error-text">パスワードエラー</p>
      </div>
    </div>
+
+   <%= link_to_add "Add a task", :large_category_id %>
 
     <!--下のボタンは中カテを選択した瞬間に表示させたい-->
 
